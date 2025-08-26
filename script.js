@@ -13,6 +13,9 @@ async function fetchLastTrack() {
       track.image.find((img) => img.size === "large") ||
       track.image[track.image.length - 1];
 
+    const isNowPlaying = track["@attr"] && track["@attr"].nowplaying === "true";
+    const playStatus = isNowPlaying ? "Now playing" : track.date["#text"];
+
     trackElement.innerHTML = `
             <div class="track-info">
                 <img src="${image["#text"]}" alt="Album cover" class="album-cover" onerror="this.style.display='none'">
@@ -20,7 +23,7 @@ async function fetchLastTrack() {
                     <a class="track-name" href="${track.url}" target="_blank">${track.name}</a>
                     <div class="artist-name">by ${track.artist["#text"]}</div>
                     <div class="album-name">from ${track.album["#text"]}</div>
-                    <div class="play-date">${track.date["#text"]}</div>
+                    <div class="play-date">${playStatus}</div>
                 </div>
             </div>
         `;
