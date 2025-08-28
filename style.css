@@ -214,3 +214,19 @@ li {
     color: #999;
     margin-top: 8px;
 }
+
+.error-header {
+    text-align: center;
+    margin-bottom: 15px;
+    border: 2px solid #ccc;
+    background-color: #fff;
+    padding: 8px;
+}
+
+.error-title {
+    font-size: 72px;
+    margin: 0;
+    padding: 0;
+    font-weight: normal;
+    color: #333;
+}
