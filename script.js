@@ -54,7 +54,6 @@ async function fetchLastCommit() {
 
       commitElement.innerHTML = `
         <div class="commit-info">
-          <img src="${repoImageUrl}" alt="Repository preview" class="github-repo-image" onerror="this.style.display='none'">
           <div class="commit-details">
             <a class="commit-message" href="${commit.url.replace("api.github.com/repos", "github.com").replace("/commits/", "/commit/")}" target="_blank">${commit.message.split("\n")[0]}</a>
             <div class="commit-repo">in <a href="${repoUrl}" target="_blank">${repo}</a></div>

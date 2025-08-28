@@ -182,15 +182,6 @@ li {
     gap: 15px;
 }
 
-.github-repo-image {
-    width: 200px;
-    height: 105px;
-    object-fit: cover;
-    border-radius: 0;
-    flex-shrink: 0;
-    image-rendering: auto;
-}
-
 .commit-details {
     flex: 1;
     display: flex;
