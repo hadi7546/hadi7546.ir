@@ -36,4 +36,4 @@ async function fetchLastTrack() {
 
 document.addEventListener("DOMContentLoaded", fetchLastTrack);
 
-setInterval(fetchLastTrack, 5 * 60 * 1000);
+setInterval(fetchLastTrack, 30 * 1000);
