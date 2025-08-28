@@ -26,22 +26,11 @@
             type="image/png"
             href="public/images/pixelated-hadi-rmbg.png"
         />
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-        <link
-            href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap"
-            rel="stylesheet"
-        />
-        <link
-            href="https://fonts.googleapis.com/css2?family=VT323&display=swap"
-            rel="stylesheet"
-        />
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="stylesheet" href="index.css" />
+        <link rel="stylesheet" href="style.css" />
     </head>
     <body>
-        <div class="container">
-            <div class="image-box pixel-borders">
+        <div class="container pixel-corner">
+            <div class="image-box">
                 <img
                     class="image"
                     src="public/images/pixelated-hadi-rmbg.png"
@@ -50,7 +39,7 @@
                 <h1 class="name">Hadi Azarnasab</h1>
             </div>
 
-            <div class="header-section pixel-borders">
+            <div class="header-section pixel-corner">
                 <div class="name-intro">
                     <p>
                         I'm Hadi, a 17-year-old high school student who lives in
@@ -83,7 +72,7 @@
                 </div>
             </div>
 
-            <div class="content-section pixel-borders">
+            <div class="content-section">
                 <b>Cool stuff I do:</b>
                 <ul>
                     <li>
@@ -163,9 +152,16 @@
                 </ul>
             </div>
 
-            <div class="lastfm-section pixel-borders">
+            <div class="lastfm-section">
                 <b>Last played:</b>
                 <div id="lastfm-track" class="lastfm-track">
+                    <div class="loading">Loading...</div>
+                </div>
+            </div>
+
+            <div class="github-section">
+                <b>Last commit:</b>
+                <div id="github-commit" class="github-commit">
                     <div class="loading">Loading...</div>
                 </div>
             </div>

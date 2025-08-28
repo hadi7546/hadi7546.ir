@@ -34,6 +34,46 @@ async function fetchLastTrack() {
   }
 }
 
-document.addEventListener("DOMContentLoaded", fetchLastTrack);
+async function fetchLastCommit() {
+  try {
+    const response = await fetch(
+      "https://api.github.com/users/hadi7546/events",
+    );
+    const data = await response.json();
+
+    const pushEvent = data.find((event) => event.type === "PushEvent");
+
+    if (pushEvent) {
+      const commit = pushEvent.payload.commits[0];
+      const repo = pushEvent.repo.name.split("/")[1];
+      const repoUrl = `https://github.com/${pushEvent.repo.name}`;
+      const date = new Date(pushEvent.created_at).toLocaleDateString();
+      const repoImageUrl = `https://opengraph.githubassets.com/1/${pushEvent.repo.name}`;
+
+      const commitElement = document.getElementById("github-commit");
+
+      commitElement.innerHTML = `
+        <div class="commit-info">
+          <img src="${repoImageUrl}" alt="Repository preview" class="github-repo-image" onerror="this.style.display='none'">
+          <div class="commit-details">
+            <a class="commit-message" href="${commit.url.replace("api.github.com/repos", "github.com").replace("/commits/", "/commit/")}" target="_blank">${commit.message.split("\n")[0]}</a>
+            <div class="commit-repo">in <a href="${repoUrl}" target="_blank">${repo}</a></div>
+            <div class="commit-date">${date}</div>
+          </div>
+        </div>
+      `;
+    }
+  } catch (error) {
+    console.error("Error fetching GitHub data:", error);
+    document.getElementById("github-commit").innerHTML =
+      '<div class="error">Unable to load commit information</div>';
+  }
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  fetchLastTrack();
+  fetchLastCommit();
+});
 
 setInterval(fetchLastTrack, 30 * 1000);
+setInterval(fetchLastCommit, 60 * 1000);
