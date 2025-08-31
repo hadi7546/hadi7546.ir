@@ -34,17 +34,25 @@ async function fetchLastTrack() {
             <div class="track-info">
                 <img src="${image["#text"]}" alt="Album cover" class="album-cover" onerror="this.style.display='none'">
                 <div class="track-details">
-                    <a class="track-name" href="${track.url}" target="_blank">${track.name}</a>
-                    <div class="artist-name">by ${track.artist["#text"]}</div>
-                    <div class="album-name">from ${track.album["#text"]}</div>
+                    <a class="track-name" href="${track.url}" target="_blank" title="${track.name}">${track.name}</a>
+                    <div class="artist-name" title="by ${track.artist["#text"]}">by ${track.artist["#text"]}</div>
+                    <div class="album-name" title="from ${track.album["#text"]}">from ${track.album["#text"]}</div>
                     <div class="play-date bright-date">${playStatus}</div>
                 </div>
             </div>
         `;
+
+    if (trackElement.classList.contains("active")) {
+      setTimeout(adjustActivityHeight, 50);
+    }
   } catch (error) {
     console.error("Error fetching Last.fm data:", error);
     document.getElementById("lastfm-track").innerHTML =
       '<div class="error">Unable to load track information</div>';
+
+    if (document.getElementById("lastfm-track").classList.contains("active")) {
+      setTimeout(adjustActivityHeight, 50);
+    }
   }
 }
 
@@ -69,17 +77,25 @@ async function fetchLastCommit() {
       commitElement.innerHTML = `
         <div class="commit-info">
           <div class="commit-details">
-            <a class="commit-message" href="${commit.url.replace("api.github.com/repos", "github.com").replace("/commits/", "/commit/")}" target="_blank">${commit.message.split("\n")[0]}</a>
-            <div class="commit-repo">in <a href="${repoUrl}" target="_blank">${repo}</a></div>
+            <a class="commit-message" href="${commit.url.replace("api.github.com/repos", "github.com").replace("/commits/", "/commit/")}" target="_blank" title="${commit.message.split("\n")[0]}">${commit.message.split("\n")[0]}</a>
+            <div class="commit-repo" title="in ${repo}">in <a href="${repoUrl}" target="_blank">${repo}</a></div>
             <div class="commit-date bright-date">${date}</div>
           </div>
         </div>
       `;
+
+      if (commitElement.classList.contains("active")) {
+        setTimeout(adjustActivityHeight, 50);
+      }
     }
   } catch (error) {
     console.error("Error fetching GitHub data:", error);
     document.getElementById("github-commit").innerHTML =
       '<div class="error">Unable to load commit information</div>';
+
+    if (document.getElementById("github-commit").classList.contains("active")) {
+      setTimeout(adjustActivityHeight, 50);
+    }
   }
 }
 
@@ -107,15 +123,25 @@ async function fetchLastTypeTest() {
         <div class="test-details">
           <div class="test-wpm">${test.wpm} WPM</div>
           <div class="test-accuracy">${test.acc}% accuracy</div>
-          <div class="test-mode">${modeDisplay}</div>
+          <div class="test-mode">mode: ${modeDisplay}</div>
           <div class="test-date bright-date">${date}</div>
         </div>
       </div>
     `;
+
+    if (testElement.classList.contains("active")) {
+      setTimeout(adjustActivityHeight, 50);
+    }
   } catch (error) {
     console.error("Error fetching MonkeyType data:", error);
     document.getElementById("monkeytype-test").innerHTML =
       '<div class="error">Unable to load test information</div>';
+
+    if (
+      document.getElementById("monkeytype-test").classList.contains("active")
+    ) {
+      setTimeout(adjustActivityHeight, 50);
+    }
   }
 }
 
@@ -123,6 +149,9 @@ document.addEventListener("DOMContentLoaded", () => {
   fetchLastTrack();
   fetchLastCommit();
   fetchLastTypeTest();
+
+  // Initial height adjustment
+  setTimeout(adjustActivityHeight, 100);
 });
 
 setInterval(fetchLastTrack, 30 * 1000);
@@ -136,6 +165,20 @@ const activities = [
 ];
 
 let currentActivityIndex = 0;
+
+function adjustActivityHeight() {
+  const activeContent = document.querySelector(".activity-content.active");
+  const activitySection = document.querySelector(".activity-section");
+
+  if (activeContent && activitySection) {
+    const contentHeight = activeContent.scrollHeight;
+    const headerHeight =
+      document.querySelector(".activity-header").offsetHeight;
+    const totalHeight = contentHeight + headerHeight + 40; // 40px for padding
+
+    activitySection.style.height = totalHeight + "px";
+  }
+}
 
 function switchActivity(index) {
   activities.forEach((_, i) => {
@@ -151,6 +194,9 @@ function switchActivity(index) {
   }
 
   currentActivityIndex = index;
+
+  // Adjust height after switching
+  setTimeout(adjustActivityHeight, 50);
 }
 
 function nextActivity() {
