@@ -35,13 +35,18 @@
     </head>
     <body>
         <div class="container pixel-corner">
-            <div class="image-box">
-                <img
-                    class="image"
-                    src="public/images/pixelated-hadi-rmbg.png"
-                    alt="hadi's pic"
-                />
-                <h1 class="name">Hadi Azarnasab</h1>
+            <div class="header-container">
+                <div class="image-box">
+                    <img
+                        class="image"
+                        src="public/images/pixelated-hadi-rmbg.png"
+                        alt="hadi's pic"
+                    />
+                    <div class="intro-text">
+                        <h1 class="name">Hadi Azarnasab</h1>
+                        <a href="/blog" target="_blank">Blog</a>
+                    </div>
+                </div>
             </div>
 
             <div class="header-section pixel-corner">
@@ -157,16 +162,30 @@
                 </ul>
             </div>
 
-            <div class="lastfm-section">
-                <b>Last played:</b>
-                <div id="lastfm-track" class="lastfm-track">
+            <div class="activity-section">
+                <div class="activity-header">
+                    <b id="activity-title">Last played:</b>
+                    <div class="nav-buttons">
+                        <button id="prev-btn" class="nav-btn">←</button>
+                        <button id="next-btn" class="nav-btn">→</button>
+                    </div>
+                </div>
+
+                <div
+                    id="lastfm-track"
+                    class="lastfm-track activity-content active"
+                >
                     <div class="loading">Loading...</div>
                 </div>
-            </div>
 
-            <div class="github-section">
-                <b>Last commit:</b>
-                <div id="github-commit" class="github-commit">
+                <div id="github-commit" class="github-commit activity-content">
+                    <div class="loading">Loading...</div>
+                </div>
+
+                <div
+                    id="monkeytype-test"
+                    class="monkeytype-test activity-content"
+                >
                     <div class="loading">Loading...</div>
                 </div>
             </div>
