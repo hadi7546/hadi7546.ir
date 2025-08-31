@@ -85,6 +85,7 @@ async function fetchLastCommit() {
 
 async function fetchLastTypeTest() {
   try {
+    // It's not a secret key.
     const apeKey =
       "NjhiNDE4MzBlZmY2N2M0ZmRjNjE4OTBlLlRHbmVNampEemxnSllFXzc5TW02TVByZ2hlNFp2Q1VU";
     const response = await fetch("https://api.monkeytype.com/results/last", {
