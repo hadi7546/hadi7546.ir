@@ -120,11 +120,13 @@ async function fetchLastTypeTest() {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-  fetchLastTrack();
-  fetchLastCommit();
-  fetchLastTypeTest();
-});
+  if (document.getElementById("lastfm-track")) {
+    fetchLastTrack();
+    fetchLastCommit();
+    fetchLastTypeTest();
 
-setInterval(fetchLastTrack, 30 * 1000);
-setInterval(fetchLastCommit, 5 * 60 * 1000);
-setInterval(fetchLastTypeTest, 5 * 60 * 1000);
+    setInterval(fetchLastTrack, 30 * 1000);
+    setInterval(fetchLastCommit, 5 * 60 * 1000);
+    setInterval(fetchLastTypeTest, 5 * 60 * 1000);
+  }
+});

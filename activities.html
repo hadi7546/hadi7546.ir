@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="description" content="My recent activities and stats." />
+        <meta
+            name="keywords"
+            content="Hadi, Azarnasab, activities, music, coding, typing"
+        />
+        <meta name="author" content="Hadi Azarnasab" />
+        <meta name="robots" content="index, follow" />
+        <meta property="og:title" content="Activities" />
+        <meta
+            property="og:description"
+            content="Recent activities and stats."
+        />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://hadi7546.ir/activities" />
+        <meta
+            property="og:image"
+            content="https://hadi7546.ir/public/images/pixelated-hadi-rmbg.png"
+        />
+        <meta name="twitter:card" content="summary" />
+        <meta name="twitter:title" content="Activities" />
+        <meta
+            name="twitter:description"
+            content="Recent activities and stats."
+        />
+        <meta
+            name="twitter:image"
+            content="https://hadi7546.ir/public/images/pixelated-hadi-rmbg.png"
+        />
+        <title>Activities</title>
+        <link
+            rel="icon"
+            type="image/png"
+            href="public/images/pixelated-hadi-rmbg.png"
+        />
+        <link
+            rel="shortcut icon"
+            type="image/png"
+            href="public/images/pixelated-hadi-rmbg.png"
+        />
+        <link rel="stylesheet" href="style.css" />
+    </head>
+    <body>
+        <div class="container">
+            <div class="page-header">
+                <h1 class="page-title">Activities</h1>
+            </div>
+
+            <div class="header-section">
+                <div class="name-intro">
+                    <p>
+                        Here you can see my recent activities including music
+                        I'm listening to, code commits, and typing test results.
+                        These are automatically updated from various platforms I
+                        use.
+                    </p>
+                    <p>
+                        <a href="/">← Back to home</a>
+                    </p>
+                </div>
+            </div>
+
+            <div class="activity-section">
+                <div class="activity-header">
+                    <b>Last played:</b>
+                </div>
+                <div id="lastfm-track" class="lastfm-track">
+                    <div class="loading">Loading...</div>
+                </div>
+            </div>
+
+            <div class="activity-section">
+                <div class="activity-header">
+                    <b>Last commit:</b>
+                </div>
+                <div id="github-commit" class="github-commit">
+                    <div class="loading">Loading...</div>
+                </div>
+            </div>
+
+            <div class="activity-section">
+                <div class="activity-header">
+                    <b>Last typing test:</b>
+                </div>
+                <div id="monkeytype-test" class="monkeytype-test">
+                    <div class="loading">Loading...</div>
+                </div>
+            </div>
+        </div>
+
+        <script src="script.js"></script>
+    </body>
+</html>

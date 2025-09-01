@@ -270,13 +270,13 @@ li {
     font-weight: 500;
 }
 
-.error-header {
+.page-header {
     text-align: center;
     border: 2px solid #ccc;
     background-color: #fff;
 }
 
-.error-title {
+.page-title {
     font-size: 72px;
     margin: 0;
     font-weight: normal;
