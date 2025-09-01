@@ -41,18 +41,10 @@ async function fetchLastTrack() {
                 </div>
             </div>
         `;
-
-    if (trackElement.classList.contains("active")) {
-      setTimeout(adjustActivityHeight, 50);
-    }
   } catch (error) {
     console.error("Error fetching Last.fm data:", error);
     document.getElementById("lastfm-track").innerHTML =
       '<div class="error">Unable to load track information</div>';
-
-    if (document.getElementById("lastfm-track").classList.contains("active")) {
-      setTimeout(adjustActivityHeight, 50);
-    }
   }
 }
 
@@ -83,19 +75,11 @@ async function fetchLastCommit() {
           </div>
         </div>
       `;
-
-      if (commitElement.classList.contains("active")) {
-        setTimeout(adjustActivityHeight, 50);
-      }
     }
   } catch (error) {
     console.error("Error fetching GitHub data:", error);
     document.getElementById("github-commit").innerHTML =
       '<div class="error">Unable to load commit information</div>';
-
-    if (document.getElementById("github-commit").classList.contains("active")) {
-      setTimeout(adjustActivityHeight, 50);
-    }
   }
 }
 
@@ -128,20 +112,10 @@ async function fetchLastTypeTest() {
         </div>
       </div>
     `;
-
-    if (testElement.classList.contains("active")) {
-      setTimeout(adjustActivityHeight, 50);
-    }
   } catch (error) {
     console.error("Error fetching MonkeyType data:", error);
     document.getElementById("monkeytype-test").innerHTML =
       '<div class="error">Unable to load test information</div>';
-
-    if (
-      document.getElementById("monkeytype-test").classList.contains("active")
-    ) {
-      setTimeout(adjustActivityHeight, 50);
-    }
   }
 }
 
@@ -149,73 +123,8 @@ document.addEventListener("DOMContentLoaded", () => {
   fetchLastTrack();
   fetchLastCommit();
   fetchLastTypeTest();
-
-  // Initial height adjustment
-  setTimeout(adjustActivityHeight, 100);
 });
 
 setInterval(fetchLastTrack, 30 * 1000);
-setInterval(fetchLastCommit, 60 * 1000);
-setInterval(fetchLastTypeTest, 60 * 1000);
-
-const activities = [
-  { title: "Last played:", contentId: "lastfm-track" },
-  { title: "Last commit:", contentId: "github-commit" },
-  { title: "Last typing test:", contentId: "monkeytype-test" },
-];
-
-let currentActivityIndex = 0;
-
-function adjustActivityHeight() {
-  const activeContent = document.querySelector(".activity-content.active");
-  const activitySection = document.querySelector(".activity-section");
-
-  if (activeContent && activitySection) {
-    const contentHeight = activeContent.scrollHeight;
-    const headerHeight =
-      document.querySelector(".activity-header").offsetHeight;
-    const totalHeight = contentHeight + headerHeight + 40; // 40px for padding
-
-    activitySection.style.height = totalHeight + "px";
-  }
-}
-
-function switchActivity(index) {
-  activities.forEach((_, i) => {
-    const element = document.getElementById(activities[i].contentId);
-    if (element) {
-      element.classList.toggle("active", i === index);
-    }
-  });
-
-  const titleElement = document.getElementById("activity-title");
-  if (titleElement) {
-    titleElement.textContent = activities[index].title;
-  }
-
-  currentActivityIndex = index;
-
-  // Adjust height after switching
-  setTimeout(adjustActivityHeight, 50);
-}
-
-function nextActivity() {
-  const nextIndex = (currentActivityIndex + 1) % activities.length;
-  switchActivity(nextIndex);
-}
-
-function prevActivity() {
-  const prevIndex =
-    (currentActivityIndex - 1 + activities.length) % activities.length;
-  switchActivity(prevIndex);
-}
-
-document.addEventListener("DOMContentLoaded", () => {
-  const nextBtn = document.getElementById("next-btn");
-  const prevBtn = document.getElementById("prev-btn");
-
-  if (nextBtn) nextBtn.addEventListener("click", nextActivity);
-  if (prevBtn) prevBtn.addEventListener("click", prevActivity);
-
-  switchActivity(0);
-});
+setInterval(fetchLastCommit, 5 * 60 * 1000);
+setInterval(fetchLastTypeTest, 5 * 60 * 1000);
