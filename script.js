@@ -101,7 +101,7 @@ async function fetchLastTypeTest() {
     const modeDisplay =
       test.mode === "time"
         ? `${test.mode} ${test.testDuration}s`
-        : test.mode + time.mode2;
+        : test.mode + test.mode2;
     testElement.innerHTML = `
       <div class="test-info">
         <div class="test-details">
