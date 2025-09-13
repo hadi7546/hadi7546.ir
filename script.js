@@ -51,7 +51,7 @@ async function fetchLastTrack() {
 async function fetchLastCommit() {
   try {
     const response = await fetch(
-      "https://api.github.com/users/hadi7546/events",
+      "https://api.github.com/users/hadi7546/events/public",
     );
     const data = await response.json();
 
