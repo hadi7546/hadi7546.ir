@@ -119,7 +119,28 @@ async function fetchLastTypeTest() {
   }
 }
 
+function setupMusicPlayer() {
+  const musicToggle = document.getElementById("music-toggle");
+  const music = document.getElementById("background-music");
+
+  if (musicToggle && music) {
+    musicToggle.addEventListener("click", () => {
+      if (music.paused) {
+        music.play();
+        musicToggle.innerHTML =
+          '<svg xmlns="http://www.w3.org/2000/svg" height="18" viewBox="0 0 24 24" width="18"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>';
+      } else {
+        music.pause();
+        musicToggle.innerHTML =
+          '<svg xmlns="http://www.w3.org/2000/svg" height="18" viewBox="0 0 24 24" width="18"><path d="M8 5v14l11-7z"/></svg>';
+      }
+    });
+  }
+}
+
 document.addEventListener("DOMContentLoaded", () => {
+  setupMusicPlayer();
+
   if (document.getElementById("lastfm-track")) {
     fetchLastTrack();
     fetchLastCommit();

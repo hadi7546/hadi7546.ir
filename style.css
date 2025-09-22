@@ -28,6 +28,45 @@ body {
     padding: 0;
     line-height: 1.2;
     font-size: 1.4rem;
+    cursor: url("public/arrow.cur"), auto;
+}
+
+.music-player {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 100;
+}
+
+.music-toggle {
+    background-color: #fff;
+    border: 2px solid #ccc;
+    border-radius: 0;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    transition: background-color 0.2s;
+}
+
+.music-toggle:hover {
+    background-color: #f0f0f0;
+}
+
+.music-toggle svg {
+    fill: #333;
+    width: 18px;
+    height: 18px;
+}
+
+a,
+button,
+.home-link,
+[role="button"] {
+    cursor: url("public/click.cur"), pointer;
 }
 
 .container {
@@ -44,6 +83,7 @@ body {
     margin-bottom: 15px;
     border: 2px solid #ccc;
     padding: 8px;
+    position: relative;
 }
 
 .header-section {
@@ -57,6 +97,7 @@ body {
     border: 2px solid #ccc;
     border-radius: 0;
     background-color: #fff;
+    position: relative;
 }
 
 .image-box {
@@ -66,6 +107,7 @@ body {
     align-items: center;
     gap: 15px;
     background-color: #fff;
+    max-width: 85%;
 }
 
 .image {
