@@ -1,0 +1,14 @@
+/* Custom cursor styles */
+html {
+  cursor: url('public/arrow.cur'), auto !important;
+}
+
+a,
+button,
+.home-link,
+input[type="submit"],
+input[type="button"],
+select,
+[role="button"] {
+  cursor: url('public/click.cur'), pointer !important;
+}

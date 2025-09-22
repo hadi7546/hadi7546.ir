@@ -28,7 +28,6 @@ body {
     padding: 0;
     line-height: 1.2;
     font-size: 1.4rem;
-    cursor: url("public/arrow.cur"), auto;
 }
 
 .music-player {
@@ -60,13 +59,6 @@ body {
     fill: #333;
     width: 18px;
     height: 18px;
-}
-
-a,
-button,
-.home-link,
-[role="button"] {
-    cursor: url("public/click.cur"), pointer;
 }
 
 .container {

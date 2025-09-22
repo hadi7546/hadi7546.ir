@@ -138,8 +138,46 @@ function setupMusicPlayer() {
   }
 }
 
+function ensureCursorPersistence() {
+  // Force cursor to be reapplied after clicks
+  document.addEventListener("click", () => {
+    // Small timeout to ensure cursor updates after browser's default behavior
+    setTimeout(() => {
+      const html = document.querySelector("html");
+      const styleAttr = html.getAttribute("style") || "";
+
+      if (!styleAttr.includes("cursor")) {
+        // Reapply the cursor from our CSS if it's been lost
+        html.style.cursor = "url('public/arrow.cur'), auto";
+      }
+
+      // Ensure all clickable elements have the correct cursor
+      document
+        .querySelectorAll("a, button, .home-link, [role='button']")
+        .forEach((el) => {
+          const elStyle = el.getAttribute("style") || "";
+          if (!elStyle.includes("cursor")) {
+            el.style.cursor = "url('public/click.cur'), pointer";
+          }
+        });
+    }, 10);
+  });
+
+  // Handle navigation links specially
+  document.querySelectorAll("a").forEach((link) => {
+    if (link.host === window.location.host) {
+      link.addEventListener("click", (e) => {
+        const cursorStyle = document.createElement("style");
+        cursorStyle.textContent = `* { transition: none !important; }`;
+        document.head.appendChild(cursorStyle);
+      });
+    }
+  });
+}
+
 document.addEventListener("DOMContentLoaded", () => {
   setupMusicPlayer();
+  ensureCursorPersistence();
 
   if (document.getElementById("lastfm-track")) {
     fetchLastTrack();
