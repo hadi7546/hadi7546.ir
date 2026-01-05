@@ -1,4 +1,3 @@
-/* Custom cursor styles */
 html {
   cursor: url('public/arrow.cur'), auto !important;
 }

@@ -85,7 +85,6 @@ async function fetchLastCommit() {
 
 async function fetchLastTypeTest() {
   try {
-    // It's not a secret key.
     const apeKey =
       "NjhiNDE4MzBlZmY2N2M0ZmRjNjE4OTBlLlRHbmVNampEemxnSllFXzc5TW02TVByZ2hlNFp2Q1VU";
     const response = await fetch("https://api.monkeytype.com/results/last", {
@@ -139,19 +138,15 @@ function setupMusicPlayer() {
 }
 
 function ensureCursorPersistence() {
-  // Force cursor to be reapplied after clicks
   document.addEventListener("click", () => {
-    // Small timeout to ensure cursor updates after browser's default behavior
     setTimeout(() => {
       const html = document.querySelector("html");
       const styleAttr = html.getAttribute("style") || "";
 
       if (!styleAttr.includes("cursor")) {
-        // Reapply the cursor from our CSS if it's been lost
         html.style.cursor = "url('public/arrow.cur'), auto";
       }
 
-      // Ensure all clickable elements have the correct cursor
       document
         .querySelectorAll("a, button, .home-link, [role='button']")
         .forEach((el) => {
@@ -160,10 +155,10 @@ function ensureCursorPersistence() {
             el.style.cursor = "url('public/click.cur'), pointer";
           }
         });
+
     }, 10);
   });
 
-  // Handle navigation links specially
   document.querySelectorAll("a").forEach((link) => {
     if (link.host === window.location.host) {
       link.addEventListener("click", (e) => {
@@ -175,9 +170,66 @@ function ensureCursorPersistence() {
   });
 }
 
+function setupAgeHover() {
+  const ageElement = document.querySelector(".age-hover");
+  if (!ageElement) {
+    return;
+  }
+
+  const labelText = ageElement.dataset.ageLabel || ageElement.textContent.trim();
+  const baseAgeYears = Number.parseFloat(ageElement.dataset.ageYears);
+  const birthdateRaw = ageElement.dataset.birthdate;
+  const birthDate = birthdateRaw ? new Date(birthdateRaw) : null;
+  const hasBirthDate = birthDate && !Number.isNaN(birthDate.getTime());
+  const baseStartRaw = ageElement.dataset.ageStart;
+  const baseStartDate = baseStartRaw ? new Date(baseStartRaw) : null;
+  const hasBaseStart = baseStartDate && !Number.isNaN(baseStartDate.getTime());
+  const msPerYear = 1000 * 60 * 60 * 24 * 365.2425;
+  const baseTimestamp = hasBaseStart ? baseStartDate.getTime() : Date.now();
+
+  let intervalId = null;
+
+  const getAgeYears = () => {
+    if (hasBirthDate) {
+      return (Date.now() - birthDate.getTime()) / msPerYear;
+    }
+    if (Number.isFinite(baseAgeYears)) {
+      return baseAgeYears + (Date.now() - baseTimestamp) / msPerYear;
+    }
+    return null;
+  };
+
+  const renderAge = () => {
+    const age = getAgeYears();
+    if (age !== null) {
+      ageElement.textContent = age.toFixed(10);
+    }
+  };
+
+  const startCounter = () => {
+    renderAge();
+    if (intervalId) {
+      return;
+    }
+    intervalId = setInterval(renderAge, 50);
+  };
+
+  const stopCounter = () => {
+    if (intervalId) {
+      clearInterval(intervalId);
+      intervalId = null;
+    }
+    ageElement.textContent = labelText;
+  };
+
+  ageElement.addEventListener("mouseenter", startCounter);
+  ageElement.addEventListener("mouseleave", stopCounter);
+}
+
 document.addEventListener("DOMContentLoaded", () => {
   setupMusicPlayer();
   ensureCursorPersistence();
+  setupAgeHover();
 
   if (document.getElementById("lastfm-track")) {
     fetchLastTrack();
