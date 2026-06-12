@@ -36,7 +36,7 @@
         <script defer src="/_vercel/insights/script.js"></script>
     </head>
     <body>
-        <div class="container pixel-corner">
+        <div class="container">
             <div class="header-container">
                 <div class="image-box">
                     <img
@@ -46,11 +46,15 @@
                     />
                     <div class="intro-text">
                         <h1 class="name">Hadi Azarnasab</h1>
-                        <a href="/activities">Activities</a>
-                        •
-                        <a href="/blog">Blog</a>
+                        <div class="nav-buttons">
+                            <a class="f-button" href="/activities"
+                                >Activities</a
+                            >
+                            <a class="f-button" href="/blog">Blog</a>
+                        </div>
                     </div>
                 </div>
+                <div class="drag-handle"></div>
                 <div class="music-player">
                     <button
                         id="music-toggle"
@@ -72,7 +76,7 @@
                 </div>
             </div>
 
-            <div class="header-section pixel-corner">
+            <div class="header-section">
                 <div class="name-intro">
                     <p>
                         I'm Hadi, a
@@ -95,16 +99,18 @@
                     </ul>
                     <p>
                         Email:
-                        <a href="mailto:hi@hadi7546.ir" , target="_blank"
+                        <a href="mailto:hi@hadi7546.ir" target="_blank"
                             >hi@hadi7546.ir</a
                         >
                         or
-                        <a href="mailto:hazard7546@gmail.com" , target="_blank"
+                        <a href="mailto:hazard7546@gmail.com" target="_blank"
                             >hazard7546@gmail.com</a
                         >
                     </p>
                 </div>
             </div>
+
+            <div class="conveyor" aria-hidden="true"></div>
 
             <div class="content-section">
                 <b>Cool stuff I do:</b>
@@ -141,12 +147,12 @@
                 <b>Find me on:</b>
                 <ul>
                     <li>
-                        <a href="https://github.com/hadi7546" , target="_blank"
+                        <a href="https://github.com/hadi7546" target="_blank"
                             >Github</a
                         >
                     </li>
                     <li>
-                        <a href="https://t.me/hadi7546" , target="_blank"
+                        <a href="https://t.me/hadi7546" target="_blank"
                             >Telegram</a
                         >
                     </li>
@@ -154,7 +160,6 @@
                     <li>
                         <a
                             href="https://twitter.com/hadi_7546"
-                            ,
                             target="_blank"
                             >Twitter</a
                         >
@@ -162,7 +167,6 @@
                     <li>
                         <a
                             href="https://www.last.fm/user/hadi7546/"
-                            ,
                             target="_blank"
                             >Last.fm</a
                         >
@@ -170,7 +174,6 @@
                     <li>
                         <a
                             href="https://mastodon.social/@hadi7546"
-                            ,
                             target="_blank"
                             >Mastodon</a
                         >
@@ -178,12 +181,16 @@
                     <li>
                         <a
                             href="https://monkeytype.com/profile/hadi7546/"
-                            ,
                             target="_blank"
                             >Monkeytype</a
                         >
                     </li>
                 </ul>
+            </div>
+
+            <div class="status-bar">
+                <span class="status-dot" aria-hidden="true"></span>
+                <span>The factory must grow.</span>
             </div>
         </div>
 

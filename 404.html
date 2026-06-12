@@ -29,20 +29,23 @@
         <div class="container">
             <div class="page-header">
                 <h1 class="page-title">404</h1>
+                <p class="page-subtitle">Entity not found</p>
             </div>
 
             <div class="header-section">
                 <div class="name-intro">
                     <p>
                         Oops! The page you're looking for doesn't exist. It
-                        might have been moved, deleted, or you entered the wrong
-                        URL.
+                        might have been moved, deconstructed by bots, eaten by
+                        biters, or you entered the wrong URL.
                     </p>
                     <p>
-                        <a href="/">← Back to home</a>
+                        <a class="home-link" href="/">← Back to base</a>
                     </p>
                 </div>
             </div>
+
+            <div class="conveyor" aria-hidden="true"></div>
 
             <div class="content-section">
                 <b>You can also:</b>
@@ -58,6 +61,11 @@
                         </a>
                     </li>
                 </ul>
+            </div>
+
+            <div class="status-bar">
+                <span class="status-dot" aria-hidden="true"></span>
+                <span>Alert: destination missing from the map.</span>
             </div>
         </div>
     </body>

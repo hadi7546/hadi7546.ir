@@ -35,20 +35,21 @@
         <link
             rel="icon"
             type="image/png"
-            href="public/images/pixelated-hadi-rmbg.png"
+            href="/public/images/pixelated-hadi-rmbg.png"
         />
         <link
             rel="shortcut icon"
             type="image/png"
-            href="public/images/pixelated-hadi-rmbg.png"
+            href="/public/images/pixelated-hadi-rmbg.png"
         />
-        <link rel="stylesheet" href="style.css" />
+        <link rel="stylesheet" href="/style.css" />
         <link rel="stylesheet" href="/cursor.css" />
     </head>
     <body>
         <div class="container">
             <div class="page-header">
                 <h1 class="page-title">Activities</h1>
+                <p class="page-subtitle">Production statistics</p>
             </div>
 
             <div class="header-section">
@@ -60,17 +61,19 @@
                         use.
                     </p>
                     <p>
-                        <a href="/">← Back to home</a>
+                        <a class="home-link" href="/">← Back to home</a>
                     </p>
                 </div>
             </div>
+
+            <div class="conveyor" aria-hidden="true"></div>
 
             <div class="activity-section">
                 <div class="activity-header">
                     <b>Last played:</b>
                 </div>
                 <div id="lastfm-track" class="lastfm-track">
-                    <div class="loading">Loading...</div>
+                    <div class="loading">Loading</div>
                 </div>
             </div>
 
@@ -79,7 +82,7 @@
                     <b>Last commit:</b>
                 </div>
                 <div id="github-commit" class="github-commit">
-                    <div class="loading">Loading...</div>
+                    <div class="loading">Loading</div>
                 </div>
             </div>
 
@@ -88,11 +91,16 @@
                     <b>Last typing test:</b>
                 </div>
                 <div id="monkeytype-test" class="monkeytype-test">
-                    <div class="loading">Loading...</div>
+                    <div class="loading">Loading</div>
                 </div>
+            </div>
+
+            <div class="status-bar">
+                <span class="status-dot" aria-hidden="true"></span>
+                <span>Telemetry online — sampling every 30s.</span>
             </div>
         </div>
 
-        <script src="script.js"></script>
+        <script src="/script.js"></script>
     </body>
 </html>
