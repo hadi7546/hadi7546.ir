@@ -226,8 +226,23 @@ function setupAgeHover() {
   ageElement.addEventListener("mouseleave", stopCounter);
 }
 
+function setupCloseButton() {
+  const closeButton = document.getElementById("close-window");
+  const container = document.querySelector(".container");
+
+  if (closeButton && container) {
+    closeButton.addEventListener("click", () => {
+      container.classList.remove("shake");
+      // force reflow so the animation can replay on repeated clicks
+      void container.offsetWidth;
+      container.classList.add("shake");
+    });
+  }
+}
+
 document.addEventListener("DOMContentLoaded", () => {
   setupMusicPlayer();
+  setupCloseButton();
   ensureCursorPersistence();
   setupAgeHover();
 

@@ -28,9 +28,22 @@
     </head>
     <body>
         <div class="container">
-            <div class="page-header">
-                <h1 class="page-title">Blog</h1>
-                <p class="page-subtitle">Research lab notes</p>
+            <div class="header-container">
+                <div class="intro-text">
+                    <h1 class="name">Blog</h1>
+                    <p class="page-subtitle">Research lab notes</p>
+                </div>
+                <div class="drag-handle"></div>
+                <div class="titlebar-actions">
+                    <a class="frame-action" href="/" title="Close (back to base)">
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 24 24"
+                        >
+                            <path d="M6 6l12 12M18 6L6 18" stroke-width="3" />
+                        </svg>
+                    </a>
+                </div>
             </div>
 
             <div class="header-section">
@@ -41,7 +54,7 @@
                         programming, philosophy, and life in general.
                     </p>
                     <p>
-                        <a class="home-link" href="/">← Back to home</a>
+                        <a class="home-link" href="/">← Back to base</a>
                     </p>
                 </div>
             </div>
@@ -49,6 +62,10 @@
             <div class="conveyor" aria-hidden="true"></div>
 
             <div class="content-section">
+                <div class="subheader">
+                    <b>Lab status</b>
+                    <span class="subheader-note">Idle</span>
+                </div>
                 <h3>The garden is resting for now</h3>
                 <p>
                     The mind is a garden. Sometimes it's in full bloom, other
@@ -62,7 +79,9 @@
 
             <div class="status-bar">
                 <span class="status-dot" aria-hidden="true"></span>
-                <span>No research in progress — lab idle.</span>
+                <span>No research in progress. The lab is idle.</span>
+                <span class="status-spacer"></span>
+                <span class="status-meta">hadi7546.ir 2.0.1</span>
             </div>
         </div>
     </body>

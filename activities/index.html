@@ -47,9 +47,22 @@
     </head>
     <body>
         <div class="container">
-            <div class="page-header">
-                <h1 class="page-title">Activities</h1>
-                <p class="page-subtitle">Production statistics</p>
+            <div class="header-container">
+                <div class="intro-text">
+                    <h1 class="name">Activities</h1>
+                    <p class="page-subtitle">Production statistics</p>
+                </div>
+                <div class="drag-handle"></div>
+                <div class="titlebar-actions">
+                    <a class="frame-action" href="/" title="Close (back to base)">
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 24 24"
+                        >
+                            <path d="M6 6l12 12M18 6L6 18" stroke-width="3" />
+                        </svg>
+                    </a>
+                </div>
             </div>
 
             <div class="header-section">
@@ -61,43 +74,50 @@
                         use.
                     </p>
                     <p>
-                        <a class="home-link" href="/">← Back to home</a>
+                        <a class="home-link" href="/">← Back to base</a>
                     </p>
                 </div>
             </div>
 
             <div class="conveyor" aria-hidden="true"></div>
 
-            <div class="activity-section">
-                <div class="activity-header">
-                    <b>Last played:</b>
+            <div class="activity-grid">
+                <div class="activity-section">
+                    <div class="subheader">
+                        <b>Last played</b>
+                        <span class="subheader-note">Last.fm</span>
+                    </div>
+                    <div id="lastfm-track" class="lastfm-track">
+                        <div class="loading">Loading</div>
+                    </div>
                 </div>
-                <div id="lastfm-track" class="lastfm-track">
-                    <div class="loading">Loading</div>
-                </div>
-            </div>
 
-            <div class="activity-section">
-                <div class="activity-header">
-                    <b>Last commit:</b>
+                <div class="activity-section">
+                    <div class="subheader">
+                        <b>Last commit</b>
+                        <span class="subheader-note">GitHub</span>
+                    </div>
+                    <div id="github-commit" class="github-commit">
+                        <div class="loading">Loading</div>
+                    </div>
                 </div>
-                <div id="github-commit" class="github-commit">
-                    <div class="loading">Loading</div>
-                </div>
-            </div>
 
-            <div class="activity-section">
-                <div class="activity-header">
-                    <b>Last typing test:</b>
-                </div>
-                <div id="monkeytype-test" class="monkeytype-test">
-                    <div class="loading">Loading</div>
+                <div class="activity-section">
+                    <div class="subheader">
+                        <b>Last typing test</b>
+                        <span class="subheader-note">Monkeytype</span>
+                    </div>
+                    <div id="monkeytype-test" class="monkeytype-test">
+                        <div class="loading">Loading</div>
+                    </div>
                 </div>
             </div>
 
             <div class="status-bar">
                 <span class="status-dot" aria-hidden="true"></span>
-                <span>Telemetry online — sampling every 30s.</span>
+                <span>Telemetry online. Sampling every 30 seconds.</span>
+                <span class="status-spacer"></span>
+                <span class="status-meta">hadi7546.ir 2.0.1</span>
             </div>
         </div>
 

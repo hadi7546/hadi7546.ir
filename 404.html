@@ -27,9 +27,22 @@
     </head>
     <body>
         <div class="container">
-            <div class="page-header">
-                <h1 class="page-title">404</h1>
-                <p class="page-subtitle">Entity not found</p>
+            <div class="header-container">
+                <div class="intro-text">
+                    <h1 class="name">404</h1>
+                    <p class="page-subtitle">Entity not found</p>
+                </div>
+                <div class="drag-handle"></div>
+                <div class="titlebar-actions">
+                    <a class="frame-action" href="/" title="Close (back to base)">
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 24 24"
+                        >
+                            <path d="M6 6l12 12M18 6L6 18" stroke-width="3" />
+                        </svg>
+                    </a>
+                </div>
             </div>
 
             <div class="header-section">
@@ -48,7 +61,10 @@
             <div class="conveyor" aria-hidden="true"></div>
 
             <div class="content-section">
-                <b>You can also:</b>
+                <div class="subheader">
+                    <b>You can also</b>
+                    <span class="subheader-note">Alternatives</span>
+                </div>
                 <ul>
                     <li>
                         <a href="mailto:hi@hadi7546.ir" target="_blank">
@@ -66,6 +82,8 @@
             <div class="status-bar">
                 <span class="status-dot" aria-hidden="true"></span>
                 <span>Alert: destination missing from the map.</span>
+                <span class="status-spacer"></span>
+                <span class="status-meta">hadi7546.ir 2.0.1</span>
             </div>
         </div>
     </body>
