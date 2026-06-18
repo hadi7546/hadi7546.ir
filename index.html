@@ -36,7 +36,7 @@
         <script defer src="/_vercel/insights/script.js"></script>
     </head>
     <body>
-        <div class="container pixel-corner">
+        <div class="container">
             <div class="header-container">
                 <div class="image-box">
                     <img
@@ -46,33 +46,58 @@
                     />
                     <div class="intro-text">
                         <h1 class="name">Hadi Azarnasab</h1>
-                        <a href="/activities">Activities</a>
-                        •
-                        <a href="/blog">Blog</a>
+                        <div class="nav-buttons">
+                            <a class="f-button" href="/activities"
+                                >Activities</a
+                            >
+                            <a class="f-button" href="/blog">Blog</a>
+                        </div>
                     </div>
                 </div>
-                <div class="music-player">
+                <div class="drag-handle"></div>
+                <div class="titlebar-actions">
+                    <div class="music-player">
+                        <button
+                            id="music-toggle"
+                            class="music-toggle"
+                            title="Play/Pause Music"
+                        >
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                height="18"
+                                viewBox="0 0 24 24"
+                                width="18"
+                            >
+                                <path d="M8 5v14l11-7z" />
+                            </svg>
+                        </button>
+                        <audio id="background-music" loop>
+                            <source src="public/music.mp3" type="audio/mpeg" />
+                        </audio>
+                    </div>
                     <button
-                        id="music-toggle"
-                        class="music-toggle"
-                        title="Play/Pause Music"
+                        id="close-window"
+                        class="frame-action"
+                        title="You cannot close this window. The factory must grow."
                     >
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
-                            height="18"
                             viewBox="0 0 24 24"
-                            width="18"
                         >
-                            <path d="M8 5v14l11-7z" />
+                            <path
+                                d="M6 6l12 12M18 6L6 18"
+                                stroke-width="3"
+                            />
                         </svg>
                     </button>
-                    <audio id="background-music" loop>
-                        <source src="public/music.mp3" type="audio/mpeg" />
-                    </audio>
                 </div>
             </div>
 
-            <div class="header-section pixel-corner">
+            <div class="header-section">
+                <div class="subheader">
+                    <b>Character</b>
+                    <span class="subheader-note">Level 18</span>
+                </div>
                 <div class="name-intro">
                     <p>
                         I'm Hadi, an
@@ -95,20 +120,41 @@
                     </ul>
                     <p>
                         Email:
-                        <a href="mailto:hi@hadi7546.ir" , target="_blank"
+                        <a href="mailto:hi@hadi7546.ir" target="_blank"
                             >hi@hadi7546.ir</a
                         >
                         or
-                        <a href="mailto:hazard7546@gmail.com" , target="_blank"
+                        <a href="mailto:hazard7546@gmail.com" target="_blank"
                             >hazard7546@gmail.com</a
                         >
                     </p>
+                    <div class="research">
+                        <div class="research-label">
+                            <span
+                                >Current research:
+                                <b>Advanced Rust processing</b></span
+                            >
+                            <span class="research-pct">67%</span>
+                        </div>
+                        <div class="progress-track">
+                            <div
+                                class="progress-fill"
+                                style="width: 67%"
+                            ></div>
+                        </div>
+                    </div>
                 </div>
             </div>
 
-            <div class="content-section">
-                <b>Cool stuff I do:</b>
-                <ul>
+            <div class="conveyor" aria-hidden="true"></div>
+
+            <div class="panel-row">
+                <div class="content-section">
+                    <div class="subheader">
+                        <b>Cool stuff I do</b>
+                        <span class="subheader-note">Production</span>
+                    </div>
+                    <ul class="science-list">
                     <li>
                         <a href="https://ganjoorak.ir" target="_blank"
                             >Building a modern platform to read and listen to
@@ -136,54 +182,78 @@
                             >Daily journaling and sharing my thoughts
                         </a>
                     </li>
-                </ul>
+                    </ul>
+                </div>
 
-                <b>Find me on:</b>
-                <ul>
-                    <li>
-                        <a href="https://github.com/hadi7546" , target="_blank"
-                            >Github</a
-                        >
-                    </li>
-                    <li>
-                        <a href="https://t.me/hadi7546" , target="_blank"
-                            >Telegram</a
-                        >
-                    </li>
-
-                    <li>
+                <div class="content-section">
+                    <div class="subheader">
+                        <b>Find me on</b>
+                        <span class="subheader-note">Logistic network</span>
+                    </div>
+                    <div class="slot-grid">
                         <a
+                            class="slot-item"
+                            href="https://github.com/hadi7546"
+                            target="_blank"
+                            data-tooltip="GitHub"
+                        >
+                            <span class="slot">G</span>
+                            <span class="slot-caption">Github</span>
+                        </a>
+                        <a
+                            class="slot-item"
+                            href="https://t.me/hadi7546"
+                            target="_blank"
+                            data-tooltip="Telegram"
+                        >
+                            <span class="slot">T</span>
+                            <span class="slot-caption">Telegram</span>
+                        </a>
+                        <a
+                            class="slot-item"
                             href="https://twitter.com/hadi_7546"
-                            ,
                             target="_blank"
-                            >Twitter</a
+                            data-tooltip="Twitter"
                         >
-                    </li>
-                    <li>
+                            <span class="slot">X</span>
+                            <span class="slot-caption">Twitter</span>
+                        </a>
                         <a
+                            class="slot-item"
                             href="https://www.last.fm/user/hadi7546/"
-                            ,
                             target="_blank"
-                            >Last.fm</a
+                            data-tooltip="Last.fm"
                         >
-                    </li>
-                    <li>
+                            <span class="slot">L</span>
+                            <span class="slot-caption">Last.fm</span>
+                        </a>
                         <a
+                            class="slot-item"
                             href="https://mastodon.social/@hadi7546"
-                            ,
                             target="_blank"
-                            >Mastodon</a
+                            data-tooltip="Mastodon"
                         >
-                    </li>
-                    <li>
+                            <span class="slot">M</span>
+                            <span class="slot-caption">Mastodon</span>
+                        </a>
                         <a
+                            class="slot-item"
                             href="https://monkeytype.com/profile/hadi7546/"
-                            ,
                             target="_blank"
-                            >Monkeytype</a
+                            data-tooltip="Monkeytype"
                         >
-                    </li>
-                </ul>
+                            <span class="slot">MT</span>
+                            <span class="slot-caption">Monkeytype</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="status-bar">
+                <span class="status-dot" aria-hidden="true"></span>
+                <span>The factory must grow.</span>
+                <span class="status-spacer"></span>
+                <span class="status-meta">hadi7546.ir 2.0.1</span>
             </div>
         </div>
 
